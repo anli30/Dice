@@ -1,40 +1,39 @@
-void setup()
-{
+int num = (int)(Math.random()*7);
+void setup(){
+	size(500,500);
 	noLoop();
-  size(500,500);
 }
-void draw()
-{
-	background(197);
-  Die start = new Die(50,50);
-  start.show();
-  
+
+void draw(){
+	background(#E2EA72);
+	Die bob = new Die(50,50);
+	bob.show();
 }
-void mousePressed()
-{
+
+void mousePressed(){
 	redraw();
 }
-class Die //models one single dice cube
-{
-	//variable declarations here
-  int num,myX,myY;
-	
-	Die(int x, int y) //constructor
-	{
-		num = (int)(Math.random()*6) +1;
-    myX = x;
-    myY = y;
+
+class Die{
+	//declare variables
+	int myX, myY;
+
+	Die(int x, int y){
+		//This is the constructor
+		//intitizlize the variables
+		myX = x;
+		myY = y;
 	}
-  void roll(){
-    
-  }
-	void show()
-	{
-		for(int i = 0; i < 20; i++){
-      for(int j = 0; j < 20; j++){
-        ellipse(j,10,40,40);
-        j = j + 50;
-      }
-    }
+	void roll(){
+		textSize(50);
+		fill(0);
+		text(num,myX,myY);
+	}
+	void show(){
+		//creates the die
+		noStroke();
+		fill(255);
+		rect(myX,myY,50,50,10);
+		roll();
 	}
 }
